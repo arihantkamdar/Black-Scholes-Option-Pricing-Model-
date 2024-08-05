@@ -40,6 +40,8 @@ class BSOptionPricing:
 
     def price(self, type_='C'):
         return {'call': float(self._call_value()), 'put': float(self._put_value()), "Stock Price" : float(self.current_price)}
+
+
 if __name__ == '__main__':
     K = 100
     r = 0.1
