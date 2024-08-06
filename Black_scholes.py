@@ -1,6 +1,7 @@
 from scipy.stats import norm
 import numpy as np
 
+
 class BSOptionPricing:
     def __init__(self, current_price, strike_price, time, risk_free_rate, volatility, q=0):
         self.current_price = current_price
@@ -24,7 +25,8 @@ class BSOptionPricing:
                 'Volatility': self.volatility}
 
     def d1(self):
-        return (np.log(self.current_price / self.strike_price) + (self.risk_free_rate - self.q + self.volatility ** 2 / 2) * self.time) \
+        return (np.log(self.current_price / self.strike_price) + (
+                    self.risk_free_rate - self.q + self.volatility ** 2 / 2) * self.time) \
             / (self.volatility * np.sqrt(self.time))
 
     def d2(self):
@@ -39,7 +41,8 @@ class BSOptionPricing:
             self.current_price * np.exp(-self.q * self.time) * self.normal_function(-self.d1())
 
     def price(self, type_='C'):
-        return {'call': float(self._call_value()), 'put': float(self._put_value()), "Stock Price" : float(self.current_price)}
+        return {'call': float(self._call_value()), 'put': float(self._put_value()),
+                "Stock Price": float(self.current_price)}
 
 
 if __name__ == '__main__':

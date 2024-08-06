@@ -35,7 +35,6 @@ def plot_with_time_current_price(time_range, strike_price, current_price_max, cu
     time_range = np.arange(1, time_range)
     current_price_range = np.arange(current_price_min, current_price_max)
     current_price_grid, time_grid = np.meshgrid(current_price_range, time_range)
-    # print(len(current_price_grid))
     call_price = np.array([[BSOptionPricing(S, strike_price, T, riskfree_rate, volatility).price()['call']
                                          for S in current_price_range] for T in time_range])
     put_price = np.array([[BSOptionPricing(S, strike_price, T, riskfree_rate, volatility).price()['put']
